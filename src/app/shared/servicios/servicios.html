@@ -1,0 +1,52 @@
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Nuestros Servicios</h2>
+      <p class="mt-4 text-lg text-slate-600">{{ subtitulo }}</p>
+      
+      <p class="mt-2 text-indigo-600 font-semibold italic">
+        Has mostrado interés en: {{ servicioSeleccionado }}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      @for (s of servicios; track s.id) {
+        <div class="flex flex-col rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          
+          <div class="relative h-48">
+            <img [src]="s.imagen" [alt]="s.nombre" 
+                 [class.grayscale]="!s.activo"
+                 class="w-full h-full object-cover">
+            
+            @if (!s.activo) {
+              <div class="absolute inset-0 bg-slate-900/40 flex items-center justify-center">
+                <span class="bg-white text-slate-900 px-3 py-1 rounded-full text-xs font-bold uppercase">
+                  Próximamente
+                </span>
+              </div>
+            }
+          </div>
+
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-slate-900">{{ s.nombre }}</h3>
+            <p class="mt-3 text-slate-500 text-sm leading-6">
+              {{ s.descripcion }}
+            </p>
+
+            <button 
+              (click)="seleccionar(s.nombre)"
+              [disabled]="!s.activo"
+              class="mt-6 w-full py-2 px-4 rounded-lg font-medium transition-all
+                     disabled:bg-slate-100 disabled:text-slate-400
+                     enabled:bg-indigo-50 enabled:text-indigo-700 enabled:hover:bg-indigo-100">
+              {{ s.activo ? 'Me interesa este servicio' : 'No disponible' }}
+            </button>
+          </div>
+        </div>
+      }
+
+    </div>
+  </div>
+</section>
