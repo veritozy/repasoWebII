@@ -25,7 +25,9 @@
 
         <div class="w-full bg-gray-200 rounded-full h-2.5 mb-1">
           <div class="bg-indigo-600 h-2.5 rounded-full" 
+          
                [ngStyle]="{ 'width': p.recuperacion + '%' }">
+               <!--width: 85, tiene que ser width: 85%), le sumamos el símbolo de porcentaje.-->
           </div>
         </div>
         <span class="text-xs text-gray-500">Recuperación: {{ p.recuperacion }}%</span>

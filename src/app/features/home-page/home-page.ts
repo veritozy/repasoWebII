@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HeroHome } from "../../shared/hero-home/hero-home";
+import { HeroHome } from "../../shared/hero/hero";
 import { Servicios } from "../../shared/servicios/servicios";
 import { PacientesDestacados } from "../../shared/pacientes-destacados/pacientes-destacados";
 
