@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DetalleMascota } from '../../shared/detalle-mascota/detalle-mascota';
 import { Mascota } from '../../models/mascota';
 
+
 @Component({
   selector: 'app-catalogo',
   imports: [DetalleMascota],
