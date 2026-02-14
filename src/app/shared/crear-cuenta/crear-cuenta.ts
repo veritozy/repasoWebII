@@ -25,7 +25,7 @@ export class CrearCuenta {
     {
       email: ['', [Validators.required, Validators.pattern(this.reglaEmail)]],
       password: ['', [Validators.required, Validators.pattern(this.reglaPassword)]],
-      repeatPassword: ['', Validators.required],
+      comentario: [''],
       terms: [false, Validators.requiredTrue],
     },
     { validators: this.validarClaves },
