@@ -1,4 +1,4 @@
-<form [formGroup]="cuentaForm" (ngSubmit)="registrar()" class="max-w-sm mx-auto">
+<form [formGroup]="cuentaForm" (ngSubmit)="registrar()" class="max-w-sm mx-auto mt-20">
   
   <div class="mb-5">
     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
@@ -33,7 +33,7 @@ touched significa "tocado".
     }
   </div>
 
-  <div class="mb-5">
+  <!--<div class="mb-5">
     <label for="repeat-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Repeat password</label>
     <input type="password" id="repeat-password" formControlName="repeatPassword" 
            class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
@@ -41,6 +41,11 @@ touched significa "tocado".
     @if (cuentaForm.hasError('noCoinciden') && cuentaForm.get('repeatPassword')?.touched) {
       <p class="mt-2 text-sm text-red-600 font-bold">⚠️ Las contraseñas no coinciden.</p>
     }
+  </div>-->
+  <div class="mb-5">
+    <textarea name="" id="">
+      
+    </textarea>
   </div>
 
   <div class="flex items-start mb-5">
