@@ -1,63 +1,29 @@
-<form [formGroup]="cuentaForm" (ngSubmit)="registrar()" name="contacto" method="post" class="max-w-sm mx-auto mt-20">
+<form [formGroup]="cuentaForm" (ngSubmit)="registrar()" name="contacto" method="POST" class="max-w-sm mx-auto mt-20">
   
-  <div class="mb-5">
-    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-    <input type="email" id="email" formControlName="email" 
-           class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="name@flowbite.com" />
-    
-<!--Es la pregunta técnica: "¿Está mal el email?".
-get('email'): Busca la casilla del correo.
-invalid: Mira si el usuario rompió alguna regla (si lo dejó vacío o si no puso el @).
-?: El "seguro de vida" que ya vimos. Si no encuentra la casilla, no rompe la página
-&& cuentaForm.get('email')?.touched
-Este es el sentido común (y el más importante para la experiencia del usuario).
-touched significa "tocado".
-¿Por qué lo usamos? Porque no queremos que el mensaje rojo de "¡ERROR!" aparezca apenas el usuario entra a la página. Queremos que aparezca solo después de que el usuario hizo clic en el campo y luego salió de él (o sea, cuando ya intentó escribir algo).-->
-    @if (cuentaForm.get('email')?.invalid && cuentaForm.get('email')?.touched) {
-      <p class="mt-2 text-sm text-red-600">
-        @if (cuentaForm.get('email')?.errors?.['required']) { El email es obligatorio. }
-        @else if (cuentaForm.get('email')?.errors?.['pattern']) { Formato de email no válido. }
-      </p>
-    }
-  </div>
+  <input type="hidden" name="form-name" value="contacto" />
 
   <div class="mb-5">
-    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-    <input type="password" id="password" formControlName="password" 
-           class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-    
-    @if (cuentaForm.get('password')?.invalid && cuentaForm.get('password')?.touched) {
-      <p class="mt-2 text-sm text-red-600">
-        Debe tener al menos 8 caracteres, letras y números.
-      </p>
-    }
-  </div>
+    <label class="...">Your email</label>
+    <input type="email" formControlName="email" name="email" class="..." placeholder="name@flowbite.com" />
+    </div>
 
-  <!--<div class="mb-5">
-    <label for="repeat-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Repeat password</label>
-    <input type="password" id="repeat-password" formControlName="repeatPassword" 
-           class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-    
-    @if (cuentaForm.hasError('noCoinciden') && cuentaForm.get('repeatPassword')?.touched) {
-      <p class="mt-2 text-sm text-red-600 font-bold">⚠️ Las contraseñas no coinciden.</p>
-    }
-  </div>-->
   <div class="mb-5">
-    <textarea formControlName="comentario" name="comentarios" id="comentarios" rows="10" cols="10" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <label class="...">Your password</label>
+    <input type="password" formControlName="password" name="password" class="..." />
+    </div>
 
-    </textarea>
+  <div class="mb-5">
+    <textarea formControlName="comentario" name="comentarios" id="comentarios" rows="3" class="..."></textarea>
   </div>
 
   <div class="flex items-start mb-5">
     <div class="flex items-center h-5">
-      <input id="terms" type="checkbox" formControlName="terms" 
-             class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600" />
+      <input id="terms" type="checkbox" formControlName="terms" name="terms" class="..." />
     </div>
-    <label for="terms" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the terms and conditions</label>
+    <label for="terms" class="...">I agree with the terms</label>
   </div>
 
-  <button type="submit" [disabled]="cuentaForm.invalid" 
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-50">
+  <button type="submit" [disabled]="cuentaForm.invalid" class="...">
     Register new account
   </button>
 </form>
