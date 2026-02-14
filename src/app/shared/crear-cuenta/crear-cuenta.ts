@@ -59,9 +59,27 @@ mostrarError(campo: string, tipoError: string): boolean {
   return false;
 }
 
-  registrar(): void {
-    if (this.cuentaForm.valid) {
-      console.log('Datos tipados:', this.cuentaForm.value);
-    }
+registrar(): void {
+  if (this.cuentaForm.valid) {
+    const cuerpo = new URLSearchParams();
+    cuerpo.set('form-name', 'contacto');
+    
+    // Usamos ?? '' para asegurar que siempre sea un string
+    cuerpo.set('email', this.cuentaForm.value.email ?? '');
+    cuerpo.set('password', this.cuentaForm.value.password ?? '');
+    cuerpo.set('comentarios', this.cuentaForm.value.comentario ?? '');
+    cuerpo.set('terms', this.cuentaForm.value.terms ? 'on' : 'off');
+
+    fetch('/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: cuerpo.toString()
+    })
+    .then(() => {
+      console.log('¡Enviado con éxito!');
+      this.cuentaForm.reset();
+    })
+    .catch((error) => console.error('Error:', error));
   }
+}
 }
