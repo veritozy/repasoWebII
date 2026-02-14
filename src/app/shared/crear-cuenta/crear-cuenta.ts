@@ -28,7 +28,7 @@ export class CrearCuenta {
       comentario: [''],
       terms: [false, Validators.requiredTrue],
     },
-    { validators: this.validarClaves },
+  
   );
 
 // control: AbstractControl: "Chicos, esto es solo una etiqueta. Le dice a la computadora que lo que va a entrar a la función es un formulario. Si no le ponemos ese nombre, la computadora no sabe que tiene que buscar cajitas de texto dentro".
