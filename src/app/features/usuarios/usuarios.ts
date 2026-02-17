@@ -3,6 +3,7 @@ import { HeroHome } from "../../shared/hero/hero";
 import { UsuariosService } from '../../services/usuarios-service';
 import { Usuario } from '../../models/usuario';
 import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-usuarios',
@@ -14,6 +15,8 @@ export class Usuarios {
   private usuarioService = inject(UsuariosService);
   private fb = inject(FormBuilder);
 
+  public servicioAuth = inject(AuthService);
+
   // VARIABLE CLAVE: Para saber si estamos editando o registrando
   editando = false;
 
@@ -24,7 +27,9 @@ export class Usuarios {
   nuevoUsuario: Usuario =  {
     nombre: '',
     email: '',
-    telefono: ''
+    telefono: '',
+    password: '',
+    rol: 'EMPLEADO'
   };
 
   ngOnInit() {
@@ -75,7 +80,7 @@ registrar() {
 
   resetear() {
     this.editando = false;
-    this.nuevoUsuario = { nombre: '', email: '', telefono: '' };
+    this.nuevoUsuario = { nombre: '', email: '', telefono: '', password: '', rol: 'EMPLEADO'};
   }
 
 }

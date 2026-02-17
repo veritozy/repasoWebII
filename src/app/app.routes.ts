@@ -6,6 +6,7 @@ import { Pets } from './shared/pets/pets';
 import { Usuarios } from './features/usuarios/usuarios';
 import { CrearCuenta } from './shared/crear-cuenta/crear-cuenta';
 import { Login } from './shared/login/login';
+import { authGuard } from './guards/auth-guard';
 
 
 
@@ -14,7 +15,7 @@ export const routes: Routes = [
     {path:'acerca', component:Acerca},
     {path:'catalogo', component:Catalogo},
     {path:'mascotas', component:Pets},
-    {path:'usuarios', component:Usuarios},
+    {path:'usuarios', component:Usuarios, canActivate:[authGuard]},
     {path:'cuenta', component:CrearCuenta},
     {path:'login', component:Login}
   

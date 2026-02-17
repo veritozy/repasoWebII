@@ -25,8 +25,7 @@ export class CrearCuenta {
     {
       email: ['', [Validators.required, Validators.pattern(this.reglaEmail)]],
       password: ['', [Validators.required, Validators.pattern(this.reglaPassword)]],
-      comentario: [''],
-      terms: [false, Validators.requiredTrue],
+      comentario: ['']
     },
   
   );
@@ -59,22 +58,36 @@ mostrarError(campo: string, tipoError: string): boolean {
   return false;
 }
 
+//Función que se ejecuta al intentar enviar los datos. No devuelve ningún valor
 registrar(): void {
+  //revisa si el formulario cumple con todas las reglas
   if (this.cuentaForm.valid) {
+    //URLSearchParams(): Crea un objeto especial que formatea los datos como una URL (ejemplo: nombre=juan&pass=123). 
+    // Es el formato que esperan muchos servicios de hosting como Netlify para procesar formularios.
     const cuerpo = new URLSearchParams();
+    //Le añade una etiqueta oculta para decirle al servidor que este formulario se llama "contacto".
     cuerpo.set('form-name', 'contacto');
     
-    // Usamos ?? '' para asegurar que siempre sea un string
+    // Usamos ?? '' para indicar que Si el valor es nulo o indefinido, pon un texto vacío
+    //Aquí se toman los valores que el usuario escribió.
     cuerpo.set('email', this.cuentaForm.value.email ?? '');
     cuerpo.set('password', this.cuentaForm.value.password ?? '');
     cuerpo.set('comentarios', this.cuentaForm.value.comentario ?? '');
-    cuerpo.set('terms', this.cuentaForm.value.terms ? 'on' : 'off');
-
-    fetch('/', {
+//función moderna de JavaScript que se usa para hacer peticiones HTTP a través de la red. En español, "fetch" significa "ir a buscar" 
+// o "traer"
+//Envía los datos a la raíz del sitio web.
+    fetch('/', { //POMESA
+      //Indica que estás enviando información nueva
       method: 'POST',
+      //Le avisa al servidor que los datos vienen codificados como una URL, no como un JSON.
+      //Headers: Dice qué tipo de información envías.
+      //es un formulario de texto estándar
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      //Convierte todo el objeto que armamos antes en una cadena de texto larga lista para viajar por internet.
+      //Body: Es la información en sí misma.
       body: cuerpo.toString()
     })
+    //Si el envío sale bien, muestra un mensaje en la consola
     .then(() => {
       console.log('¡Enviado con éxito!');
       this.cuentaForm.reset();
