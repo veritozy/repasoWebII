@@ -1,0 +1,11 @@
+<carousel [interval]="4000" [isAnimated]="true">
+    @for (contenido of contenidoCarrusel; track contenido.titulo) {
+  <slide>
+    <img [src]="contenido.url" [alt]="contenido.titulo" style="display: block; width: 100%;">
+    <div class="carousel-caption d-none d-md-block">
+      <h3>{{contenido.titulo}}</h3>
+      <p>{{contenido.descripcion}}</p>
+    </div>
+  </slide>
+  }
+</carousel>

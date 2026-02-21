@@ -10,6 +10,7 @@ import { authGuard } from './guards/auth-guard';
 
 
 
+
 export const routes: Routes = [
     {path:'', component:HomePage},
     {path:'acerca', component:Acerca},
@@ -17,6 +18,6 @@ export const routes: Routes = [
     {path:'mascotas', component:Pets},
     {path:'usuarios', component:Usuarios, canActivate:[authGuard]},
     {path:'cuenta', component:CrearCuenta},
-    {path:'login', component:Login}
+    {path:'login', component:Login},
   
 ];
